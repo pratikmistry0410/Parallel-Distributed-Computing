@@ -48,22 +48,26 @@ int main(int argc, char *argv[]){
 		reset_and_start_timer();
 		calulateRoot_ispc(totalNum, values, result, firstGuess);
 		double dt = get_elapsed_mcycles();
-    	printf("Cyles taken in iteration: %d for square root calculation via ISPC (single core):\t\t\t %.3f million cycles\n", i, dt);
+    	printf("Cyles taken in iteration: %d for square root calculation via ISPC (single core):\t %.3f million cycles\n", i, dt);
         minISPC = std::min(minISPC, dt); 
 	}
-    printf("Minimum cycles taken to calulate root via ISPC (Single Core):\t\t %.3f million cycles\n", minISPC);
+    printf("Minimum cycles taken to calulate root via ISPC (Single Core):\t %.3f million cycles\n\n", minISPC);
 
 	double minSerial = 1e30;
 	for(unsigned int i = 0 ; i < 3; i ++){
 		reset_and_start_timer();
 		calulateRoot_serial(totalNum, values, result, firstGuess);
 		double dt = get_elapsed_mcycles();
-    	printf("Cyles taken in iteration: %d for square root calculation serially:\t\t\t %.3f million cycles\n", i, dt);
+    	printf("Cyles taken in iteration: %d for square root calculation serially:\t %.3f million cycles\n", i, dt);
         minSerial = std::min(minSerial, dt); 
 	}
-    printf("Minimum cycles taken to calulate root serially:\t\t %.3f million cycles\n", minSerial);
+    printf("Minimum cycles taken to calulate root serially:\t %.3f million cycles\n", minSerial);
 
-    printf("\n Total speedup from ISPC with respect to serial execution is: %.2fx speedup)\n", minSerial/minISPC);
+    printf("------------------------------------------------------------------------------------------------------");
+
+    printf("Total speedup from ISPC with respect to serial execution is: %.2fx speedup)\n", minSerial/minISPC);
+
+    printf("------------------------------------------------------------------------------------------------------");
 
     delete[] values;
     delete[] result;
