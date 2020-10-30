@@ -33,7 +33,7 @@ int main(int argc, char *argv[]){
     	printf("Cycles taken in iteration: %d for square root calculation via ISPC (single core):\t %.3f million cycles\n", i+1, dt);
         minISPC = std::min(minISPC, dt); 
 	}
-    printf("Minimum cycles taken to calulate root via ISPC (Single Core):\t %.3f million cycles\n\n", minISPC);
+    printf("Minimum cycles taken to calulate root via ISPC (Single Core) with target as avx2 :\t %.3f million cycles\n\n", minISPC);
 
     delete[] values;
     delete[] result;
