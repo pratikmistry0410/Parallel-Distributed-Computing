@@ -40,7 +40,7 @@ int main(int argc, char *argv[]){
 	float* result = new float[totalNum];
 
     if (argc < 2) {
-        fprintf(stderr, "You must pass number of threads in arguments.\n");
+        fprintf(stderr, "ERROR: You must pass number of threads for executing ISPC code with launch tasks in the arguments..!!\n");
         exit(EXIT_FAILURE);
     }
 
