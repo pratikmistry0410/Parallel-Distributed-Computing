@@ -1,6 +1,7 @@
 #include <immintrin.h>
 #include <stdio.h>
 #include "timing.h"
+#include <iostream>
 
 using namespace std;
 
