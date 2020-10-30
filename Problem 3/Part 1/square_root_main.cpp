@@ -44,11 +44,12 @@ int main(int argc, char *argv[]){
 		result[i] = 0.0;
 	}
 
+	printf("\n");
 	for(unsigned int i = 0; i < 3; i++){
 		reset_and_start_timer();
 		calulateRoot_ispc(totalNum, values, result, firstGuess);
 		double dt = get_elapsed_mcycles();
-    	printf("\nCycles taken in iteration: %d for square root calculation via ISPC (single core):\t %.3f million cycles\n", i, dt);
+    	printf("Cycles taken in iteration: %d for square root calculation via ISPC (single core):\t %.3f million cycles\n", i, dt);
         minISPC = std::min(minISPC, dt); 
 	}
     printf("Minimum cycles taken to calulate root via ISPC (Single Core):\t %.3f million cycles\n\n", minISPC);

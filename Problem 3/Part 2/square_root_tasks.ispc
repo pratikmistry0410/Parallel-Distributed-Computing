@@ -1,6 +1,6 @@
 //Function called by main program for square root using launch tasks
 
-task void calulateRoot_launchTasks(uniform double times, uniform float input[], uniform float output[], uniform float firstGuess, uniform int span){
+task void calculateRoot_launchTasks(uniform double times, uniform float input[], uniform float output[], uniform float firstGuess, uniform int span){
 
     uniform int start = taskIndex * span;
     uniform int end = min((taskIndex+1) * span, (unsigned int)times);	
@@ -19,8 +19,8 @@ task void calulateRoot_launchTasks(uniform double times, uniform float input[], 
     }
 }
 
-export void calulateRoot_ispc_tasks(uniform double times, uniform float input[], uniform float output[], uniform float firstGuess, uniform int nbThreads){
+export void calculateRoot_ispc_tasks(uniform double times, uniform float input[], uniform float output[], uniform float firstGuess, uniform int nbThreads){
    uniform int span = (20e6)/nbThreads;
 
-   launch[times/span] calulateRoot_launchTasks(times, input, output,firstGuess,span);
+   launch[times/span] calculateRoot_launchTasks(times, input, output,firstGuess,span);
 }
