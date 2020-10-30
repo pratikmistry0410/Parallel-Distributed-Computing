@@ -1,4 +1,5 @@
-#include <immintrin.h>
+#include <immintrin.h> 			// AVX
+#include <nmmintrin.h>          //SSE4.2
 #include <stdio.h>
 #include "timing.h"
 #include <iostream>
@@ -52,6 +53,19 @@ int main() {
 	    minAVX = std::min(minAVX, dt); 
 	}
     printf("Minimum cycles taken to calulate root via AVX Intrinsics \t %.3f million cycles\n\n", minAVX);
+
+	__m valuesVec_sse = _mm_loadu_ps(values);
+    __m resultVec_sse = _mm_loadu_ps(result);
+
+	printf("\n");
+	for(unsigned int i = 0; i < 3; i++){
+		reset_and_start_timer();
+        resultVec_sse  =_mm_sqrt_ps(valuesVec_sse);          //calculating the square root
+		double dt = get_elapsed_mcycles();
+    	printf("Cycles taken in iteration: %d for square root calculation via SSE Intrinsics:\t %.3f million cycles\n", i+1, dt);
+	    minAVX = std::min(minAVX, dt); 
+	}
+    printf("Minimum cycles taken to calulate root via SSE Intrinsics \t %.3f million cycles\n\n", minAVX);
 
     double minSerial = 1e30;
 	for(unsigned int i = 0 ; i < 3; i ++){
