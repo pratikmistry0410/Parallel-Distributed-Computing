@@ -49,7 +49,7 @@ int main(int argc, char *argv[]){
 		reset_and_start_timer();
 		calulateRoot_ispc(totalNum, values, result, firstGuess);
 		double dt = get_elapsed_mcycles();
-    	printf("Cycles taken in iteration: %d for square root calculation via ISPC (single core):\t %.3f million cycles\n", i, dt);
+    	printf("Cycles taken in iteration: %d for square root calculation via ISPC (single core):\t %.3f million cycles\n", i+1, dt);
         minISPC = std::min(minISPC, dt); 
 	}
     printf("Minimum cycles taken to calulate root via ISPC (Single Core):\t %.3f million cycles\n\n", minISPC);
@@ -59,7 +59,7 @@ int main(int argc, char *argv[]){
 		reset_and_start_timer();
 		calulateRoot_serial(totalNum, values, result, firstGuess);
 		double dt = get_elapsed_mcycles();
-    	printf("Cycles taken in iteration: %d for square root calculation serially:\t %.3f million cycles\n", i, dt);
+    	printf("Cycles taken in iteration: %d for square root calculation serially:\t %.3f million cycles\n", i+1, dt);
         minSerial = std::min(minSerial, dt); 
 	}
     printf("Minimum cycles taken to calulate root serially:\t %.3f million cycles\n", minSerial);

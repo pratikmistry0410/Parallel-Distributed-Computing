@@ -38,6 +38,12 @@ int main(int argc, char *argv[]){
 	double minISPC = 1e30;
 	float* values = new float[totalNum];
 	float* result = new float[totalNum];
+
+    if (argc < 2) {
+        printf(stderr, "You must pass number of threads in arguments.\n");
+        exit(EXIT_FAILURE);
+    }
+
 	const int nbThreads  = atoi(argv[1]);
 	// generate N float num;
 	for(int i = 0; i < totalNum; i++){
@@ -45,11 +51,12 @@ int main(int argc, char *argv[]){
 		result[i] = 0.0;
 	}
 
+    printf("\n");
 	for(unsigned int i = 0; i < 3; i++){
 		reset_and_start_timer();
 		calculateRoot_ispc_tasks(totalNum, values, result, firstGuess,nbThreads);
 		double dt = get_elapsed_mcycles();
-    	printf("\nCycles taken in iteration: %d for square root calculation via ISPC with %d threads:\t %.3f million cycles\n", i, nbThreads, dt);
+    	printf("Cycles taken in iteration: %d for square root calculation via ISPC with %d threads:\t %.3f million cycles\n", i+1, nbThreads, dt);
 	    minISPC = std::min(minISPC, dt); 
 	}
     printf("Minimum cycles taken to calulate root via ISPC with %d threads:\t %.3f million cycles\n\n", nbThreads, minISPC);
@@ -59,7 +66,7 @@ int main(int argc, char *argv[]){
 		reset_and_start_timer();
 		calculateRoot_serial(totalNum, values, result, firstGuess);
 		double dt = get_elapsed_mcycles();
-    	printf("Cycles taken in iteration: %d for square root calculation serially:\t %.3f million cycles\n", i, dt);
+    	printf("Cycles taken in iteration: %d for square root calculation serially:\t %.3f million cycles\n", i+1, dt);
         minSerial = std::min(minSerial, dt); 
 	}
     printf("Minimum cycles taken to calulate root serially:\t %.3f million cycles\n", minSerial);
