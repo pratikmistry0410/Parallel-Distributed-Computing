@@ -40,7 +40,7 @@ int main(int argc, char *argv[]){
 	float* result = new float[totalNum];
 
     if (argc < 2) {
-        printf(stderr, "You must pass number of threads in arguments.\n");
+        fprintf(stderr, "You must pass number of threads in arguments.\n");
         exit(EXIT_FAILURE);
     }
 
