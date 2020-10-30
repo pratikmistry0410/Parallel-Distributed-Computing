@@ -42,6 +42,7 @@ int main() {
 
     __m256 valuesVec = _mm256_loadu_ps(values);
     __m256 resultVec = _mm256_loadu_ps(result);
+
     printf("\n");
 	for(unsigned int i = 0; i < 3; i++){
 		reset_and_start_timer();
