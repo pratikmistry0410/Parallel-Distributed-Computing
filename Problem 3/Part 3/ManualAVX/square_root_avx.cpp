@@ -64,11 +64,5 @@ int main() {
 	}
     printf("Minimum cycles taken to calulate root serially:\t %.3f million cycles\n", minSerial);
 
-    printf("------------------------------------------------------------------------------------------------------------\n");
-
-    printf("Total speedup from AVX Intrinsics to serial execution is: %.2fx speedup)\n", (minSerial/minAVX));
-
-    printf("------------------------------------------------------------------------------------------------------------\n");
- 
-  return 0;
+  	return 0;
 }
