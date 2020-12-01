@@ -10,12 +10,17 @@
 #define RMAX 1000000                                     // Random values in the range 0 to RMAX-1
 using namespace std;
 
+void sort_list(int a[], int N, int up);
+int* generate_list(int* array, int num_elements);
+void compare_and_swap(int a[], int i, int j, int dir);
+void bitonic_sort(int a[], int low, int count, int dir);
+void bitonic_merge(int a[], int low, int count, int dir);
 
 // Main Function - Driver Function
 int main(int argc, char *argv[]) {
 	if (argc != 2){
 		fprintf(stderr, "Please enter N i.e. Number of elements in list\n");
-		exit 0;
+		exit(0);
 	}
 	int num_elements = atoi(argv[1]);
 	int* a = new int[num_elements];
@@ -27,7 +32,7 @@ int main(int argc, char *argv[]) {
 	clock_t start, end;
 	start = clock();
 
-	sort(a, num_elements, up);
+	sort_list(a, num_elements, up);
 
 	end = clock();
 
@@ -52,7 +57,7 @@ int* generate_list(int* array, int num_elements) {
 
 
 // Caller of bitonic_sort for sorting the entire array of length N in ASCENDING order
-void sort(int a[], int N, int up)
+void sort_list(int a[], int N, int up)
 {
 	bitonic_sort(a, 0, N, up);
 }
