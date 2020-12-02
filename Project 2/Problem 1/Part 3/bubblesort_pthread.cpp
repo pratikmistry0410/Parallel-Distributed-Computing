@@ -114,14 +114,19 @@ int main(int argc, char* argv[])
         cout << "Given array is: "; 
         printArray(); 
     }
-    
+    clock_t start, end;
+	start = clock();
+
     oddEven(threads); 
   
+    float seconds = ((float)end - (float)start) / CLOCKS_PER_SEC;
 
     if(argc == 4){
         cout << "\nSorted array is: "; 
         printArray(); 
     }
+
+    cout << "Total time taken to sort the list by Bubble Sort using Pthreads Parallel Method = " << seconds << " seconds" << endl;
   
     return 0; 
 } 
