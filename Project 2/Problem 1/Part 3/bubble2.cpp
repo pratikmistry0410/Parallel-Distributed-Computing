@@ -2,14 +2,16 @@
 #include <pthread.h> 
   
 using namespace std; 
-  
+#define RMAX 100
 // size of array 
-#define n 8 
-  
+
+int n;  
 // maximum number of threads 
-int max_threads = (n + 1) / 2; 
+int max_threads; 
+int *a;
+
   
-int a[] = { 2, 1, 4, 9, 5, 3, 6, 10 }; 
+// int a[] = { 2, 1, 4, 9, 5, 3, 6, 10 }; 
 int tmp; 
   
 // Function to compare and exchange 
@@ -26,7 +28,16 @@ void* compare(void* arg)
         swap(a[index], a[index + 1]); 
     } 
 } 
-  
+
+
+// Function to use random number generator to generate a list of integers from values between 0 to RMAX defined above.
+void generate_list(int list[], int n) {
+    int i;
+    srandom(1);
+    for (i = 0; i < n; i++)
+        list[i] = random() % RMAX;
+}
+
 void oddEven(pthread_t threads[]) 
 { 
     int i, j; 
@@ -74,7 +85,14 @@ void printArray()
 // Driver Code 
 int main() 
 { 
-  
+    max_threads = 4;
+    n = 100;
+
+    a = malloc(n*sizeof(int));
+
+    // v_initiate();
+    generate_list(a, n);
+    
     pthread_t threads[max_threads]; 
   
     cout << "Given array is: "; 

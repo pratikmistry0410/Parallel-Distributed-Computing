@@ -1,4 +1,4 @@
-all : bubble2
+all : bubble2 bubblesort_pthread
 
 bubblesort_pthread: bubblesort_pthread.c
 	gcc -g -Wall -o bubblesort_pthread bubblesort_pthread.c -lpthread
