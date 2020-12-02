@@ -89,10 +89,10 @@ void printArray()
 // Driver Code 
 int main() 
 { 
-    max_threads = 4;
+    
     n = 100;
-
-    a = malloc(n*sizeof(int));
+    max_threads = (n+1)/2;
+    a = (int*)malloc(n*sizeof(int));
     generate_list();
     // v_initiate();
     
