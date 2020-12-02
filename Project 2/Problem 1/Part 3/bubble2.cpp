@@ -12,7 +12,7 @@ using namespace std;
 int n;  
 // maximum number of threads 
 int max_threads; 
-int a[n];
+int *a;
 
   
 // int a[] = { 2, 1, 4, 9, 5, 3, 6, 10 }; 
@@ -92,8 +92,9 @@ int main()
     max_threads = 4;
     n = 100;
 
-    // v_initiate();
+    a = malloc(n*sizeof(int));
     generate_list();
+    // v_initiate();
     
     pthread_t threads[max_threads]; 
   
