@@ -99,8 +99,9 @@ int main(int argc, char* argv[])
      = 
 
     max_threads = strtol(argv[1], NULL, 10);
-    if(thread_count < (n+1)/2){ 
+    if(max_threads < (n+1)/2){ 
         fprintf(stderr, "Thread count should be greater than equal to half of N i.e. tc >= (N+1)/2 .\n");
+        exit(0);
     }
     n = strtol(argv[2], NULL, 10);
 
