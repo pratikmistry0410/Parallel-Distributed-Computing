@@ -1,7 +1,8 @@
-all : bitonic_sequential bitonic_pthreads
+all : bitonic_sequential quicksort_sequential
 
 bitonic_sequential: bitonic_sequential.cpp
 	g++ -std=c++11 -o bitonic_sequential bitonic_sequential.cpp
 
-bitonic_pthreads: bitonic_pthreads.c
-	gcc -g -Wall -o bitonic_pthreads bitonic_pthreads.c -lpthread
+quicksort_sequential: quicksort_sequential.cpp
+	g++ -std=c++11 -o quicksort_sequential quicksort_sequential.cpp
+
