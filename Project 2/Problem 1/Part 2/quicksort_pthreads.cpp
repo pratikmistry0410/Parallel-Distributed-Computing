@@ -8,7 +8,7 @@
 #include <sys/types.h>
 
 //Macro defining the number of threads
-#define N  3
+#define N 8
 
 using namespace std;
 
@@ -161,6 +161,10 @@ void* qsort_parallel(void * arg) {
 
 int main(int argc, char *argv[]) {
 
+  if (argc != 2){
+		fprintf(stderr, "Please enter N i.e. Number of elements in list\n");
+		exit(0);
+	}
 
   //These are the number of elements to be sorted taken as an input with the program
   const int num  = atoi(argv[1]);
