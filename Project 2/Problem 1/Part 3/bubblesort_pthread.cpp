@@ -6,7 +6,7 @@
 #include <stdio.h>
   
 using namespace std; 
-#define RMAX 100
+#define RMAX 1000000
 // size of array 
 
 int n;  
