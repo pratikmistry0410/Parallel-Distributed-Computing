@@ -89,7 +89,7 @@ void printArray()
 // Driver Code 
 int main(int argc, char* argv[]) 
 { 
-    if (argc == 3 || argc == 4){
+    if (argc < 3 || argc > 4){
 		fprintf(stderr, "Please follow this format: ./bubblesort_pthread <thread count> <N> [o]\n");
         fprintf(stderr, "N = Number of elements in list\n");
         fprintf(stderr, "Thread count should be greater than equal to half of N..!!\n");
@@ -110,7 +110,7 @@ int main(int argc, char* argv[])
     
     pthread_t threads[max_threads]; 
     
-    if(argc == 4 && argv[3] == '-o'){
+    if(argc == 4){
         cout << "Given array is: "; 
         printArray(); 
     }
@@ -118,7 +118,7 @@ int main(int argc, char* argv[])
     oddEven(threads); 
   
 
-    if(argc == 4 && argv[3] == '-o'){
+    if(argc == 4){
         cout << "\nSorted array is: "; 
         printArray(); 
     }
