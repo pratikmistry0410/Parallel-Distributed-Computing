@@ -1,5 +1,9 @@
 #include <bits/stdc++.h> 
 #include <pthread.h> 
+#include <unistd.h>
+#include <stdlib.h>
+#include <time.h>
+#include <stdio.h>
   
 using namespace std; 
 #define RMAX 100
