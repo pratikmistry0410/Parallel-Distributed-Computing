@@ -96,7 +96,6 @@ int main(int argc, char* argv[])
         fprintf(stderr, "'o': If you want to display original and sorted lists\n");
         exit(0);       // Terminate the program
 	}
-     = 
 
     max_threads = strtol(argv[1], NULL, 10);
     if(max_threads < (n+1)/2){ 
