@@ -84,9 +84,9 @@ int main(int argc, char* argv[]) {
 
 		swapped = 0;
 
-		for(i = 1; i < thread_count; i+=2)
+		for(i = 0; i < thread_count; i+=2)
 			pthread_create(&thread_handles[i], NULL, &bubble, i);
-		for(i = 1; i < thread_count; i+=2)
+		for(i = 0; i < thread_count; i+=2)
 			pthread_join(thread_handles[i], NULL);
 
 	} while(swapped == 1);
