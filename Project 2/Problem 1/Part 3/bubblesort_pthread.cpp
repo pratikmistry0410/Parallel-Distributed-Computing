@@ -105,6 +105,9 @@ int main(int argc, char* argv[])
         exit(0);
     }
 
+    clock_t start, end;
+	start = clock();
+    
     a = (int*)malloc(n*sizeof(int));
     generate_list();
     
@@ -114,8 +117,7 @@ int main(int argc, char* argv[])
         cout << "Given array is: "; 
         printArray(); 
     }
-    clock_t start, end;
-	start = clock();
+    
 
     oddEven(threads); 
   
