@@ -12,7 +12,7 @@ using namespace std;
 int n;  
 // maximum number of threads 
 int max_threads; 
-int *a;
+int a[n];
 
   
 // int a[] = { 2, 1, 4, 9, 5, 3, 6, 10 }; 
@@ -35,11 +35,11 @@ void* compare(void* arg)
 
 
 // Function to use random number generator to generate a list of integers from values between 0 to RMAX defined above.
-void generate_list(int list[], int n) {
+void generate_list() {
     int i;
     srandom(1);
     for (i = 0; i < n; i++)
-        list[i] = random() % RMAX;
+        a[i] = random() % RMAX;
 }
 
 void oddEven(pthread_t threads[]) 
@@ -92,10 +92,8 @@ int main()
     max_threads = 4;
     n = 100;
 
-    a = malloc(n*sizeof(int));
-
     // v_initiate();
-    generate_list(a, n);
+    generate_list();
     
     pthread_t threads[max_threads]; 
   
