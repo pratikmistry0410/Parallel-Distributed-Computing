@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
     if (argc!=3){
 		fprintf(stderr, "Please follow this format: ./bubblesort_pthread <thread count> <N> [o]\n");
         fprintf(stderr, "N = Number of elements in list\n");
-        fprintf(stderr, "where N should be evenly divisible by thread count..!!\n");
+        fprintf(stderr, "where thread count should be greater than equal to N..!!\n");
         fprintf(stderr, "'o': If you want to display original and sorted lists\n");
         exit(0);       // Terminate the program
 	}

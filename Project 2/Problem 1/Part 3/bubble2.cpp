@@ -87,14 +87,26 @@ void printArray()
 } 
   
 // Driver Code 
-int main() 
+int main(int argc, char* argv[]) 
 { 
-    
-    n = 100;
-    max_threads = (n+1)/2;
+    if (argc!=3){
+		fprintf(stderr, "Please follow this format: ./bubblesort_pthread <thread count> <N> [o]\n");
+        fprintf(stderr, "N = Number of elements in list\n");
+        fprintf(stderr, "Thread count should be greater than equal to half of N..!!\n");
+        fprintf(stderr, "'o': If you want to display original and sorted lists\n");
+        exit(0);       // Terminate the program
+	}
+     = 
+
+    max_threads = strtol(argv[1], NULL, 10);
+    if(thread_count < (n+1)/2){ 
+        fprintf(stderr, "Thread count should be greater than equal to half of N i.e. tc >= (N+1)/2 .\n");
+    }
+    n = strtol(argv[2], NULL, 10);
+
+
     a = (int*)malloc(n*sizeof(int));
     generate_list();
-    // v_initiate();
     
     pthread_t threads[max_threads]; 
   
