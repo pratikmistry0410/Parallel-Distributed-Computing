@@ -17,7 +17,7 @@ int main(int argc, char * argv[]){
     //These are the number of elements to be sorted taken as an input with the program
     int tasks  = atoi(argv[2]);                     // Total number of tasks
 
-    int length = 4;                             // Max Length of Password
+    int length = 8;                             // Max Length of Password
     unsigned char  * digest2 = (unsigned char * )calloc(1,MD5_DIGEST_LENGTH);
     uint8_t * output = new uint8_t[length]();
     unsigned int count = pow(62,length);
@@ -46,8 +46,8 @@ int main(int argc, char * argv[]){
         }
     }
 
-    printf("[AVX]MD5 hash comparison of %d "
-           "entries took %ld ms\n", count, elapsed);
+    printf("[AVX] MD5 hash comparison of %d "
+           "entries took %ld ms\n\n", count, elapsed);
 
 
     memset(output,0,length);
@@ -60,7 +60,7 @@ int main(int argc, char * argv[]){
             exit(1);
         }
         char filename[10];
-        printf("[TASKS]Starting passwords of size %d\n",i);
+        printf("[TASKS] Starting passwords of size %d\n",i);
         sprintf(filename, "table%d.txt",i);
         load_hashes(phrases,i,filename);
         start = Clock::now();
@@ -69,13 +69,13 @@ int main(int argc, char * argv[]){
         free(phrases);
         elapsed += duration_cast<milliseconds>(end - start).count();
         if(strlen((char*)output) > 0){
-            printf("[TASKS]Password: %s\n",output);
+            printf("[TASKS] Password: %s\n",output);
             break;
         }
     }
 
-    printf("[TASKS]MD5 hash comparison of %d "
-           "entries took %ld ms with %d tasks\n", count, elapsed, tasks);
+    printf("[TASKS] MD5 hash comparison of %d "
+           "entries took %ld ms with %d tasks\n\n", count, elapsed, tasks);
 
 
 
@@ -85,7 +85,7 @@ int main(int argc, char * argv[]){
         count = pow(62,i);
         phrases = (char*) calloc(count * i, 2*sizeof(char ));
         char filename[10];
-        printf("[SERIAL]Starting passwords of size %d\n",i);
+        printf("[SERIAL] Starting passwords of size %d\n",i);
         sprintf(filename, "table%d.txt",i);
         load_hashes(phrases,i,filename);
         start = Clock::now();
@@ -100,7 +100,7 @@ int main(int argc, char * argv[]){
     }
 
     printf("[SERIAL] MD5 hash comparison of %d "
-           "entries took %ld ms\n", count, elapsed);
+           "entries took %ld ms\n\n", count, elapsed);
     return 0;
 
 }
