@@ -1,5 +1,12 @@
 {
     "files.associations": {
-        "random": "cpp"
+        "__bit_reference": "cpp",
+        "__split_buffer": "cpp",
+        "deque": "cpp",
+        "initializer_list": "cpp",
+        "ios": "cpp",
+        "iterator": "cpp",
+        "string": "cpp",
+        "vector": "cpp"
     }
 }
