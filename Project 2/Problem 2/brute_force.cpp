@@ -14,7 +14,7 @@ int main(int argc, char * argv[]){
     }
     // const char md5[]= "0fdc3cbc9a749efcaf083440a794fae4";                // Testing Hash
     char * md5 = argv[1];
-    //These are the number of elements to be sorted taken as an input with the program
+    //These are the number of ISPC tasks to be used for sorting
     int tasks  = atoi(argv[2]);                     // Total number of tasks
 
     int length = 4;                             // Max Length of Password
@@ -112,9 +112,9 @@ void compare_hashes_serial(const uint8_t * phrases,const uint64_t * digest,uint8
         uint64_t hash_c_low = 0;
         uint64_t hash_c_up = 0;
         md5(&phrases[0] + i * length, length, &hash_c_low,&hash_c_up);
-    if((hash_c_low == dig_low) && (hash_c_up == dig_up)){
-        memcpy(output,(uint8_t *)&phrases[0] + i * length,length);
-    }
+        if((hash_c_low == dig_low) && (hash_c_up == dig_up)){
+            memcpy(output,(uint8_t *)&phrases[0] + i * length,length);
+        }
     }
 }
 
