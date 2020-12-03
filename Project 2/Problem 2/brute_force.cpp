@@ -5,16 +5,19 @@
 unsigned char digest[MD5_DIGEST_LENGTH];
 
 int main(int argc, char * argv[]){
-    if(argc < 2){
-        cout << "Correct usage: brute_forcer <md5 hash>\n";
+    if(argc < 3){
+        cout << "Correct usage of program: brute_force_password_cracker <md5 hash> <number of tasks> \n";
         exit(1);
     } else if(strlen(argv[1]) != 32){
         cout << "MD5 not correct length\n";
         exit(1);
     }
-    // const char md5[]= "0fdc3cbc9a749efcaf083440a794fae4"; 
+    // const char md5[]= "0fdc3cbc9a749efcaf083440a794fae4";                // Testing Hash
     char * md5 = argv[1];
-    int length = 4;
+    //These are the number of elements to be sorted taken as an input with the program
+    int tasks  = atoi(argv[2]);                     // Total number of tasks
+
+    int length = 4;                             // Max Length of Password
     unsigned char  * digest2 = (unsigned char * )calloc(1,MD5_DIGEST_LENGTH);
     uint8_t * output = new uint8_t[length]();
     unsigned int count = pow(62,length);
@@ -22,14 +25,14 @@ int main(int argc, char * argv[]){
 
     str_to_md5(md5, digest2);
     md5_to_str(digest2);
-    int tasks = 7;
+                           
     time_point<Clock> start, end;
     long elapsed = 0;
     for(int i = 1; i <= length;i++){
         count = pow(62,i);
         phrases = (char*) calloc(count * i, 2*sizeof(char ));
         char filename[10];
-        printf("[AVX]Starting passwords of size %d\n",i);
+        printf("[AVX] Starting passwords of size %d\n",i);
         sprintf(filename, "table%d.txt",i);
         load_hashes(phrases,i,filename);
         start = Clock::now();
@@ -91,12 +94,12 @@ int main(int argc, char * argv[]){
         free(phrases);
         elapsed += duration_cast<milliseconds>(end - start).count();
         if(strlen((char*)output) > 0){
-            printf("[SERIAL]Password: %s\n",output);
+            printf("[SERIAL] Password: %s\n",output);
             break;
         }
     }
 
-    printf("[SERIAL]MD5 hash comparison of %d "
+    printf("[SERIAL] MD5 hash comparison of %d "
            "entries took %ld ms\n", count, elapsed);
     return 0;
 
@@ -131,7 +134,7 @@ while ((read = getline(&line, &len, file)) != -1) {
         memcpy(&phrases[0] + counter * phrase_size, line, phrase_size);
         counter++;
     }
-    cout << "Done loading hashes... " << counter << endl;
+    cout << "Loaded all the hashes... " << counter << endl;
     fclose(file);
     free(phrase_line);
     return 1;
