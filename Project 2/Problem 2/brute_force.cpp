@@ -17,7 +17,7 @@ int main(int argc, char * argv[]){
     //These are the number of elements to be sorted taken as an input with the program
     int tasks  = atoi(argv[2]);                     // Total number of tasks
 
-    int length = 8;                             // Max Length of Password
+    int length = 4;                             // Max Length of Password
     unsigned char  * digest2 = (unsigned char * )calloc(1,MD5_DIGEST_LENGTH);
     uint8_t * output = new uint8_t[length]();
     unsigned int count = pow(62,length);
